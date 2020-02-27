@@ -43,9 +43,6 @@ class Ui(QtWidgets.QMainWindow):
             # if everything went through, do the magic iconify stuff
             Iconify(userOptions)
 
-            # TODO SET THAT THE ICONIFY BUTTON SO IT CAN UPDATE IF PATH CHANGED
-
-
             # save the settings place in steam path and custom shortcut folder
             configFileName = "config.ini"
 
