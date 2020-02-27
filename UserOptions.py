@@ -53,6 +53,8 @@ class UserOptions():
     def setOriginalIconPath(self, path):
         if(path == ""):
             raise ValueError("Invalid icon path")
+        if(not os.path.exists(path)):
+            raise ValueError("Cannot find " + path)
 
         self.originalIconPath = path
 
@@ -60,7 +62,7 @@ class UserOptions():
         if(path == ""):
             raise ValueError("Invalid steam path")
         if(not os.path.exists(path)):
-            raise ValueError("Cannot find ", path)
+            raise ValueError("Cannot find " + path)
 
         self.steamPath = path
 

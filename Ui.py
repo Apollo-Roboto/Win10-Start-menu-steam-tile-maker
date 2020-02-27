@@ -14,13 +14,18 @@ class Ui(QtWidgets.QMainWindow):
         
         self.initUI()
 
-    def showError(self, msg):
-        self.inputError_label.setStyleSheet("color: FireBrick;")
-        self.inputError_label.setText(msg)
 
-    def showSuccess(self):
-        self.inputError_label.setStyleSheet("color: ForestGreen;")
-        self.inputError_label.setText("Success!")
+
+    def statusMessage(self, msg, color=""):
+        color = color.lower()
+        if(color == "red"):
+            self.inputError_label.setStyleSheet("color: FireBrick;")
+        elif(color == "green"):
+            self.inputError_label.setStyleSheet("color: ForestGreen;")
+        else:
+            self.inputError_label.setStyleSheet("")
+
+        self.inputError_label.setText(msg)
 
     def iconify_pushButton_clicked(self):
 
@@ -34,10 +39,10 @@ class Ui(QtWidgets.QMainWindow):
             # if everything went through, do the magic iconify stuff
             Iconify(userOptions)
 
-            self.showSuccess()
+            self.statusMessage("Success!", "green")
 
         except ValueError as e:
-            self.showError(e.args[0])
+            self.statusMessage(e.args[0], "red")
 
 
 
