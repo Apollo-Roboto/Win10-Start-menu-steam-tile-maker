@@ -1,6 +1,7 @@
 
 from PyQt5 import QtWidgets, uic
-import sys
+import sys, re
+import pathlib
 
 from Iconify import Iconify
 from UserOptions import UserOptions
@@ -54,8 +55,26 @@ class Ui(QtWidgets.QMainWindow):
         fileName = fileName[0] # getOpenFileName returns a tuple for some reason, I only need the path
 
         if(not fileName == ""):
-            #todo get url from the file, not the path. from this file, it is possible to set the game title
-            self.gameURL_lineEdit.setText(fileName)
+
+            # get url from file
+            data = ""
+            with open(fileName, "r") as urlFile:
+                data = urlFile.read()
+
+            # match the url and write the result
+            re_steamURL = re.compile("steam://rungameid/[0-9]+")
+            match = re_steamURL.search(data)
+
+            if(match != None):
+                url = match[0]
+                self.gameURL_lineEdit.setText(url)
+
+                # set game title from the selected file
+                gameTitle = pathlib.Path(fileName).stem
+                self.gameTitle_lineEdit.setText(gameTitle)
+
+            else:
+                self.statusMessage("Invalid game url", "red")
 
 
     def iconLocation_toolButton_clicked(self):
