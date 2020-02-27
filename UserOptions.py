@@ -20,6 +20,8 @@ class UserOptions():
     mediumIconPath = ""
     smallIconPath = ""
 
+
+
     def generate(self):
         self.steamDirtectory = "\\".join(self.steamPath.split("\\")[:-1]) + "\\"
         self.shortcutPath = os.path.join(pathlib.Path.home(), "AppData", "Roaming", "Microsoft", "Windows", "Start Menu", "Programs", "TileIconify", "Custom Shortcuts", self.gameName, self.gameName + ".lnk")
