@@ -56,7 +56,7 @@ class UserOptions():
 
     def setSteamPath(self, path):
         if(path == ""):
-            raise ValueError("Invalid path")
+            raise ValueError("Invalid steam path")
         if(not os.path.exists(path)):
             raise ValueError("Cannot find ", path)
 
@@ -64,7 +64,7 @@ class UserOptions():
 
     def setTileIconifyMainPath(self, path):
         if(path == ""):
-            raise ValueError("Invalid path")
+            raise ValueError("Invalid TileIconify path")
 
         self.tileIconifyMainPath = path
 
@@ -72,8 +72,10 @@ class UserOptions():
     def __init__(self, gameName, gameURL, icon, steamPath, tileIconifyMainPath):
 
 
+        #these are a few input for testing
+
         # ---testenin---
-        # steam://rungameid/356190
+        # steam://rungameid/126409
         # C:\Users\Alex\Desktop\Win10-Start-menu-steam-tile-maker-master\testIcon.png
         # C:\Program Files (x86)\Steam\Steam.exe
         # C:\ProgramData\TileIconify\

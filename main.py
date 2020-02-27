@@ -33,9 +33,6 @@ def main():
     window = Ui()
     window.show()
     app.exec_()
-    
-   
-
 
 
 

@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>550</width>
-    <height>256</height>
+    <height>305</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -19,7 +19,7 @@
   <property name="minimumSize">
    <size>
     <width>550</width>
-    <height>256</height>
+    <height>305</height>
    </size>
   </property>
   <property name="maximumSize">
@@ -37,7 +37,7 @@
      <number>5</number>
     </property>
     <property name="topMargin">
-     <number>10</number>
+     <number>5</number>
     </property>
     <property name="rightMargin">
      <number>5</number>
@@ -45,19 +45,28 @@
     <property name="bottomMargin">
      <number>5</number>
     </property>
-    <item row="3" column="0" colspan="2">
-     <layout class="QHBoxLayout" name="horizontalLayout_6">
-      <item>
-       <widget class="QPushButton" name="iconify_pushButton">
+    <item row="1" column="0">
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="4" column="1">
+       <widget class="QLineEdit" name="tileIconifyFolder_lineEdit"/>
+      </item>
+      <item row="2" column="1">
+       <widget class="QLineEdit" name="iconLocation_lineEdit"/>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="label_3">
         <property name="text">
-         <string>Iconify!</string>
+         <string>Icon location</string>
         </property>
        </widget>
       </item>
-     </layout>
-    </item>
-    <item row="1" column="0">
-     <layout class="QGridLayout" name="gridLayout">
+      <item row="0" column="0">
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>Game title</string>
+        </property>
+       </widget>
+      </item>
       <item row="1" column="0">
        <widget class="QLabel" name="label_2">
         <property name="text">
@@ -82,72 +91,41 @@
         </property>
        </widget>
       </item>
-      <item row="1" column="1">
-       <widget class="QLineEdit" name="gameURL_lineEdit"/>
+      <item row="4" column="2">
+       <widget class="QToolButton" name="tileIconifyFolder_toolButton">
+        <property name="text">
+         <string>...</string>
+        </property>
+       </widget>
       </item>
-      <item row="0" column="1">
+      <item row="3" column="2">
+       <widget class="QToolButton" name="steamLocation_toolButton">
+        <property name="text">
+         <string>...</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="2">
+       <widget class="QToolButton" name="iconLocation_toolButton">
+        <property name="text">
+         <string>...</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1" colspan="2">
        <widget class="QLineEdit" name="gameTitle_lineEdit"/>
       </item>
-      <item row="0" column="0">
-       <widget class="QLabel" name="label">
-        <property name="text">
-         <string>Game title</string>
+      <item row="1" column="1">
+       <widget class="QLineEdit" name="gameURL_lineEdit">
+        <property name="dragEnabled">
+         <bool>false</bool>
         </property>
        </widget>
       </item>
-      <item row="2" column="1">
-       <widget class="QLineEdit" name="iconLocation_lineEdit"/>
-      </item>
-      <item row="4" column="1">
-       <widget class="QLineEdit" name="tileIconifyFolder_lineEdit"/>
-      </item>
-      <item row="2" column="0">
-       <widget class="QLabel" name="label_3">
+      <item row="1" column="2">
+       <widget class="QToolButton" name="gameURL_toolButton">
         <property name="text">
-         <string>Icon location</string>
-        </property>
-       </widget>
-      </item>
-      <item row="5" column="1">
-       <spacer name="verticalSpacer_2">
-        <property name="orientation">
-         <enum>Qt::Vertical</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>20</width>
-          <height>40</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-     </layout>
-    </item>
-    <item row="0" column="0" colspan="2">
-     <layout class="QVBoxLayout" name="verticalLayout_3">
-      <property name="bottomMargin">
-       <number>10</number>
-      </property>
-      <item>
-       <widget class="QLabel" name="label_6">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-          <horstretch>1</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="text">
-         <string>Start Menu Steam Tile Maker</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="Line" name="line">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
+         <string>...</string>
         </property>
        </widget>
       </item>
@@ -224,6 +202,47 @@
       </item>
      </layout>
     </item>
+    <item row="0" column="0" colspan="2">
+     <layout class="QVBoxLayout" name="verticalLayout_3">
+      <property name="bottomMargin">
+       <number>10</number>
+      </property>
+      <item>
+       <widget class="QLabel" name="label_6">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+          <horstretch>1</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>Start Menu Steam Tile Maker</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="Line" name="line">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="3" column="0" colspan="2">
+     <layout class="QHBoxLayout" name="horizontalLayout_6">
+      <item>
+       <widget class="QPushButton" name="iconify_pushButton">
+        <property name="text">
+         <string>Iconify!</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
    </layout>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -248,9 +267,13 @@
  <tabstops>
   <tabstop>gameTitle_lineEdit</tabstop>
   <tabstop>gameURL_lineEdit</tabstop>
+  <tabstop>gameURL_toolButton</tabstop>
   <tabstop>iconLocation_lineEdit</tabstop>
+  <tabstop>iconLocation_toolButton</tabstop>
   <tabstop>steamLocation_lineEdit</tabstop>
+  <tabstop>steamLocation_toolButton</tabstop>
   <tabstop>tileIconifyFolder_lineEdit</tabstop>
+  <tabstop>tileIconifyFolder_toolButton</tabstop>
   <tabstop>iconify_pushButton</tabstop>
  </tabstops>
  <resources/>
