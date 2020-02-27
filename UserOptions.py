@@ -12,7 +12,7 @@ class UserOptions():
     originalIconPath = ""
 
     steamPath = ""
-    tileIconifyMainPath = ""
+    customShortcutFolder = ""
 
     userName = ""
     steamDirtectory = ""
@@ -24,7 +24,7 @@ class UserOptions():
     mediumIconPath = ""
     smallIconPath = ""
 
-    def __init__(self, gameName, gameURL, icon, steamPath, tileIconifyMainPath):
+    def __init__(self, gameName, gameURL, icon, steamPath, customShortcutFolder):
 
 
         #these are a few input for testing
@@ -39,14 +39,14 @@ class UserOptions():
         self.setGameURL(gameURL)
         self.setOriginalIconPath(icon)
         self.setSteamPath(steamPath)
-        self.setTileIconifyMainPath(tileIconifyMainPath)
+        self.setCustomShortcutFolder(customShortcutFolder)
 
         self.generate()
 
     def generate(self):
         self.steamDirtectory = "\\".join(self.steamPath.split("\\")[:-1]) + "\\"
         self.shortcutPath = os.path.join(pathlib.Path.home(), "AppData", "Roaming", "Microsoft", "Windows", "Start Menu", "Programs", "TileIconify", "Custom Shortcuts", self.gameName, self.gameName + ".lnk")
-        self.gameFolderPath = os.path.join(self.tileIconifyMainPath, self.gameName)
+        self.gameFolderPath = os.path.join(self.setCustomShortcutFolder, self.gameName)
         self.vbsFile = os.path.join(self.gameFolderPath, self.gameName + ".vbs")
         self.visualElementsManifestFile = os.path.join(self.gameFolderPath, self.gameName + ".VisualElementsManifest.xml")
         self.visualElementsFolder = os.path.join(self.gameFolderPath, "VisualElements")
@@ -57,7 +57,7 @@ class UserOptions():
 
     def setGameName(self, title):
         if(title == ""):
-            raise ValueError("Invalid game title")
+            raise ValueError("Invalid game title.")
 
         self.gameName = title
 
@@ -65,11 +65,11 @@ class UserOptions():
 
     def setGameURL(self, url):
         if(url == ""):
-            raise ValueError("Invalid game url")
+            raise ValueError("Invalid game url.")
 
         re_steamURL = re.compile("^steam://rungameid/[0-9]+$")
         if(not re_steamURL.match(url)):
-            raise ValueError("Invalid game url")
+            raise ValueError("Invalid game url.")
 
         self.gameURL = url
 
@@ -77,15 +77,15 @@ class UserOptions():
 
     def setOriginalIconPath(self, path):
         if(path == ""):
-            raise ValueError("Invalid icon path")
+            raise ValueError("Invalid icon path.")
         if(not os.path.exists(path)):
-            raise ValueError("Cannot find " + path)
+            raise ValueError("Cannot find " + path + ".")
 
         try: # check if the file is valid for PILLOW
             icon = Image.open(path)
             del icon
         except OSError:
-            raise ValueError("Incompatible image file")
+            raise ValueError("Incompatible image file.")
 
         self.originalIconPath = path
 
@@ -93,16 +93,16 @@ class UserOptions():
 
     def setSteamPath(self, path):
         if(path == ""):
-            raise ValueError("Invalid steam path")
+            raise ValueError("Invalid steam path.")
         if(not os.path.exists(path)):
-            raise ValueError("Cannot find " + path)
+            raise ValueError("Cannot find " + path + ".")
 
         self.steamPath = path
 
 
 
-    def setTileIconifyMainPath(self, path):
+    def setCustomShortcutFolder(self, path):
         if(path == ""):
-            raise ValueError("Invalid TileIconify path")
+            raise ValueError("Invalid custom shortcut path.")
 
-        self.tileIconifyMainPath = path
+        self.customShortcutFolder = path

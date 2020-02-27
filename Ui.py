@@ -38,7 +38,7 @@ class Ui(QtWidgets.QMainWindow):
                                         self.gameURL_lineEdit.text(),
                                         self.iconLocation_lineEdit.text(),
                                         self.steamLocation_lineEdit.text(),
-                                        self.tileIconifyFolder_lineEdit.text())
+                                        self.customShortcutFolder_lineEdit.text())
 
             # if everything went through, do the magic iconify stuff
             Iconify(userOptions)
@@ -49,7 +49,7 @@ class Ui(QtWidgets.QMainWindow):
             config = ConfigParser()
             config.read(configFileName)
             config.set("Path", "steam_path", self.steamLocation_lineEdit.text())
-            config.set("Path", "custom_shortcut_folder", self.tileIconifyFolder_lineEdit.text())
+            config.set("Path", "custom_shortcut_folder", self.customShortcutFolder_lineEdit.text())
 
             with open(configFileName, "w") as configFile:
                 config.write(configFile)
@@ -111,10 +111,10 @@ class Ui(QtWidgets.QMainWindow):
 
 
 
-    def tileIconifyFolder_toolButton_clicked(self):
+    def customShortcutFolder_toolButton_clicked(self):
         folderName = QtWidgets.QFileDialog.getExistingDirectory(self, "Open Folder", "")
         if(not folderName == ""):
-            self.tileIconifyFolder_lineEdit.setText(folderName)
+            self.customShortcutFolder_lineEdit.setText(folderName)
 
 
 
@@ -133,7 +133,7 @@ class Ui(QtWidgets.QMainWindow):
         self.gameURL_toolButton.clicked.connect(self.gameURL_toolButton_clicked)
         self.iconLocation_toolButton.clicked.connect(self.iconLocation_toolButton_clicked)
         self.steamLocation_toolButton.clicked.connect(self.steamLocation_toolButton_clicked)
-        self.tileIconifyFolder_toolButton.clicked.connect(self.tileIconifyFolder_toolButton_clicked)
+        self.customShortcutFolder_toolButton.clicked.connect(self.customShortcutFolder_toolButton_clicked)
 
 
 
@@ -150,7 +150,7 @@ class Ui(QtWidgets.QMainWindow):
             pass
 
         try: # try to get custom_shortcut_folder from config file
-            self.tileIconifyFolder_lineEdit.setText(config.get("Path", "custom_shortcut_folder"))
+            self.customShortcutFolder_lineEdit.setText(config.get("Path", "custom_shortcut_folder"))
         except (NoOptionError, NoSectionError):
             pass
 
