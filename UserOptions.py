@@ -40,6 +40,8 @@ class UserOptions():
 
         self.gameName = title
 
+
+
     def setGameURL(self, url):
         if(url == ""):
             raise ValueError("Invalid game url")
@@ -50,6 +52,8 @@ class UserOptions():
 
         self.gameURL = url
 
+
+
     def setOriginalIconPath(self, path):
         if(path == ""):
             raise ValueError("Invalid icon path")
@@ -57,6 +61,8 @@ class UserOptions():
             raise ValueError("Cannot find " + path)
 
         self.originalIconPath = path
+
+
 
     def setSteamPath(self, path):
         if(path == ""):
@@ -66,12 +72,15 @@ class UserOptions():
 
         self.steamPath = path
 
+
+
     def setTileIconifyMainPath(self, path):
         if(path == ""):
             raise ValueError("Invalid TileIconify path")
 
         self.tileIconifyMainPath = path
 
+    
     
     def __init__(self, gameName, gameURL, icon, steamPath, tileIconifyMainPath):
 
