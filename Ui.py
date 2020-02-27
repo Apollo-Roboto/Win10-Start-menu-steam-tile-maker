@@ -62,9 +62,6 @@ class Ui(QtWidgets.QMainWindow):
 
 
     def gameURL_toolButton_clicked(self):
-        # fileName = QtWidgets.QFileDialog.getOpenFileName(self, "Open Image", "", "Image Files (*.png *.jpg *.bmp)")
-        # print(fileName[0])
-
         fileName = QtWidgets.QFileDialog.getOpenFileName(self, "Open Url", "", "Internet Shortcut (*.url)")
         fileName = fileName[0] # getOpenFileName returns a tuple for some reason, I only need the path
 
@@ -92,7 +89,6 @@ class Ui(QtWidgets.QMainWindow):
 
 
     def iconLocation_toolButton_clicked(self):
-
         fileName = QtWidgets.QFileDialog.getOpenFileName(self, "Open Image", "", "Image Files (*.png *.jpg *.bmp)")
         fileName = fileName[0] # getOpenFileName returns a tuple for some reason, I only need the path
 
