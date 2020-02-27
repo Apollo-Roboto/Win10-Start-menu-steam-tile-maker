@@ -43,6 +43,20 @@ class Ui(QtWidgets.QMainWindow):
             # if everything went through, do the magic iconify stuff
             Iconify(userOptions)
 
+            # TODO SET THAT THE ICONIFY BUTTON SO IT CAN UPDATE IF PATH CHANGED
+
+
+            # save the settings place in steam path and custom shortcut folder
+            configFileName = "config.ini"
+
+            config = ConfigParser()
+            config.read(configFileName)
+            config.set("Path", "steam_path", self.steamLocation_lineEdit.text())
+            config.set("Path", "custom_shortcut_folder", self.tileIconifyFolder_lineEdit.text())
+
+            with open(configFileName, "w") as configFile:
+                config.write(configFile)
+
             self.statusMessage("Success!", "green")
 
         except ValueError as e:
@@ -109,7 +123,7 @@ class Ui(QtWidgets.QMainWindow):
 
     def initUI(self):
         # apparence
-        # self.statusBar().hide()
+        self.statusBar().hide()
         self.inputError_label.setText("")
         width = 600
         height = 300
@@ -138,16 +152,11 @@ class Ui(QtWidgets.QMainWindow):
         except (NoOptionError, NoSectionError):
             pass
 
-        try: # try to get tile_iconify_main_path from config file
-            self.tileIconifyFolder_lineEdit.setText(config.get("Path", "tile_iconify_main_path"))
+        try: # try to get custom_shortcut_folder from config file
+            self.tileIconifyFolder_lineEdit.setText(config.get("Path", "custom_shortcut_folder"))
         except (NoOptionError, NoSectionError):
             pass
 
 
-        # TODO SET THAT THE ICONIFY BUTTON SO IT CAN UPDATE IF PATH CHANGED
-        # WHEREIWAS
-        # config.set("Path", "testenin", "42")
-
-        # with open(configFileName, "w") as configFile:
-        #     config.write(configFile)
+        
         
