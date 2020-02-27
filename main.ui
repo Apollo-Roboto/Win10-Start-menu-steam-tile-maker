@@ -56,21 +56,21 @@
       <item row="2" column="0">
        <widget class="QLabel" name="label_3">
         <property name="text">
-         <string>Icon location</string>
+         <string>Icon location:</string>
         </property>
        </widget>
       </item>
       <item row="0" column="0">
        <widget class="QLabel" name="label">
         <property name="text">
-         <string>Game title</string>
+         <string>Game title:</string>
         </property>
        </widget>
       </item>
       <item row="1" column="0">
        <widget class="QLabel" name="label_2">
         <property name="text">
-         <string>Game URL</string>
+         <string>Game url:</string>
         </property>
        </widget>
       </item>
@@ -80,14 +80,14 @@
       <item row="4" column="0">
        <widget class="QLabel" name="label_5">
         <property name="text">
-         <string>TileIconify folder</string>
+         <string>TileIconify folder:</string>
         </property>
        </widget>
       </item>
       <item row="3" column="0">
        <widget class="QLabel" name="label_4">
         <property name="text">
-         <string>Steam location</string>
+         <string>Steam location:</string>
         </property>
        </widget>
       </item>
@@ -112,9 +112,6 @@
         </property>
        </widget>
       </item>
-      <item row="0" column="1" colspan="2">
-       <widget class="QLineEdit" name="gameTitle_lineEdit"/>
-      </item>
       <item row="1" column="1">
        <widget class="QLineEdit" name="gameURL_lineEdit">
         <property name="dragEnabled">
@@ -128,6 +125,9 @@
          <string>...</string>
         </property>
        </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLineEdit" name="gameTitle_lineEdit"/>
       </item>
      </layout>
     </item>
@@ -238,6 +238,15 @@
        <widget class="QPushButton" name="iconify_pushButton">
         <property name="text">
          <string>Iconify!</string>
+        </property>
+        <property name="autoDefault">
+         <bool>false</bool>
+        </property>
+        <property name="default">
+         <bool>false</bool>
+        </property>
+        <property name="flat">
+         <bool>false</bool>
         </property>
        </widget>
       </item>

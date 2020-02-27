@@ -15,12 +15,10 @@ class Ui(QtWidgets.QMainWindow):
         self.initUI()
 
     def showError(self, msg):
-        self.inputError_label.show()
         self.inputError_label.setStyleSheet("color: FireBrick;")
         self.inputError_label.setText(msg)
 
     def showSuccess(self):
-        self.inputError_label.show()
         self.inputError_label.setStyleSheet("color: ForestGreen;")
         self.inputError_label.setText("Success!")
 
@@ -41,7 +39,7 @@ class Ui(QtWidgets.QMainWindow):
         except ValueError as e:
             self.showError(e.args[0])
 
-            
+
 
     def gameURL_toolButton_clicked(self):
         # fileName = QtWidgets.QFileDialog.getOpenFileName(self, "Open Image", "", "Image Files (*.png *.jpg *.bmp)")
@@ -84,10 +82,10 @@ class Ui(QtWidgets.QMainWindow):
 
     def initUI(self):
         # apparence
-        self.statusBar().hide()
-        self.inputError_label.hide()
+        # self.statusBar().hide()
+        self.inputError_label.setText("")
         width = 600
-        height = 230
+        height = 300
         self.setMinimumSize(width, height)
         self.setMaximumSize(width, height)
 
