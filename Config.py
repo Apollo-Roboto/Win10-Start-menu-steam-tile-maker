@@ -25,3 +25,6 @@ class Config():
     smallIconPath = os.path.join(visualElementsFolder, f"SmallIcon{gameName}.png")
 
 
+    test = "testing"
+
+
