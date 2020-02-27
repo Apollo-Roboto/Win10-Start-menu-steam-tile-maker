@@ -2,6 +2,9 @@ import pathlib
 import os, re
 from PIL import Image
 
+# this class check and validate all of the user inputs to make sure the program wont fail.
+# it also generate a whole lot of other important info
+
 class UserOptions():
 
     gameName = ""
@@ -21,7 +24,24 @@ class UserOptions():
     mediumIconPath = ""
     smallIconPath = ""
 
+    def __init__(self, gameName, gameURL, icon, steamPath, tileIconifyMainPath):
 
+
+        #these are a few input for testing
+
+        # ---testenin---
+        # steam://rungameid/126409
+        # C:\Users\Alex\Desktop\Win10-Start-menu-steam-tile-maker-master\testIcon.png
+        # C:\Program Files (x86)\Steam\Steam.exe
+        # C:\ProgramData\TileIconify\
+
+        self.setGameName(gameName)
+        self.setGameURL(gameURL)
+        self.setOriginalIconPath(icon)
+        self.setSteamPath(steamPath)
+        self.setTileIconifyMainPath(tileIconifyMainPath)
+
+        self.generate()
 
     def generate(self):
         self.steamDirtectory = "\\".join(self.steamPath.split("\\")[:-1]) + "\\"
@@ -86,24 +106,3 @@ class UserOptions():
             raise ValueError("Invalid TileIconify path")
 
         self.tileIconifyMainPath = path
-
-    
-
-    def __init__(self, gameName, gameURL, icon, steamPath, tileIconifyMainPath):
-
-
-        #these are a few input for testing
-
-        # ---testenin---
-        # steam://rungameid/126409
-        # C:\Users\Alex\Desktop\Win10-Start-menu-steam-tile-maker-master\testIcon.png
-        # C:\Program Files (x86)\Steam\Steam.exe
-        # C:\ProgramData\TileIconify\
-
-        self.setGameName(gameName)
-        self.setGameURL(gameURL)
-        self.setOriginalIconPath(icon)
-        self.setSteamPath(steamPath)
-        self.setTileIconifyMainPath(tileIconifyMainPath)
-
-        self.generate()

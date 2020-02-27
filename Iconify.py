@@ -42,6 +42,32 @@ class Iconify:
 
 
 
+    def __init__(self, userOptions):
+
+        # check if userOptions is valid
+        if(not isinstance(userOptions, UserOptions)):
+            raise ValueError("invalid UserOptions")
+
+        self.userOptions = userOptions
+
+        # prepare folders
+        self.checkAndCreateGameFolder()
+
+        # prepare the VBS file used to execute the game using the steam url
+        self.createVBS()
+
+        # create the shortcut in the tileIconify's shortcut folder, this is where we can pin them to the start menu
+        self.createVBSShortcut()
+
+        #https://docs.microsoft.com/en-us/uwp/schemas/appxpackage/uapmanifestschema/element-uap-visualelements
+        #create the visual elements manifest file and prepare the folder to receive the icons
+        self.createVisualElementsManifest()
+
+        #create icons for the visual elements from the image specified in the configs
+        self.createIcons()
+
+
+
     def applyUserOptionsToData(self, fileData):
         
         for key in self.userOptions.__dict__:
@@ -84,10 +110,6 @@ class Iconify:
             # write vbs with modified template
             with open(vbsFile, "w") as f:
                 f.write(vbsTemplate)
-
-
-
-
 
 
 
@@ -146,30 +168,3 @@ class Iconify:
             icon.save(smallIconPath)
 
         del icon
-
-
-
-
-    def __init__(self, userOptions):
-
-        # check if userOptions is valid
-        if(not isinstance(userOptions, UserOptions)):
-            raise ValueError("invalid UserOptions")
-
-        self.userOptions = userOptions
-
-        # prepare folders
-        self.checkAndCreateGameFolder()
-
-        # prepare the VBS file used to execute the game using the steam url
-        self.createVBS()
-
-        # create the shortcut in the tileIconify's shortcut folder, this is where we can pin them to the start menu
-        self.createVBSShortcut()
-
-        #https://docs.microsoft.com/en-us/uwp/schemas/appxpackage/uapmanifestschema/element-uap-visualelements
-        #create the visual elements manifest file and prepare the folder to receive the icons
-        self.createVisualElementsManifest()
-
-        #create icons for the visual elements from the image specified in the configs
-        self.createIcons()

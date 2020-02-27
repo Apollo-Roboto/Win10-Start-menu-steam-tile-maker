@@ -2,11 +2,13 @@
 from PyQt5 import QtWidgets, uic
 import sys, re
 import pathlib
+from configparser import ConfigParser, NoOptionError, NoSectionError
 
 from Iconify import Iconify
 from UserOptions import UserOptions
 
 class Ui(QtWidgets.QMainWindow):
+
     def __init__(self):
         super(Ui, self).__init__()
 
@@ -14,6 +16,7 @@ class Ui(QtWidgets.QMainWindow):
         uic.loadUi("main.ui", self)
         
         self.initUI()
+        self.initFromConf()
 
 
 
@@ -120,4 +123,31 @@ class Ui(QtWidgets.QMainWindow):
         self.iconLocation_toolButton.clicked.connect(self.iconLocation_toolButton_clicked)
         self.steamLocation_toolButton.clicked.connect(self.steamLocation_toolButton_clicked)
         self.tileIconifyFolder_toolButton.clicked.connect(self.tileIconifyFolder_toolButton_clicked)
+
+
+
+    def initFromConf(self):
+        # read from config file
+        configFileName = "config.ini"
+
+        config = ConfigParser()
+        config.read(configFileName)
+
+        try: # try to get steam_path from config file
+            self.steamLocation_lineEdit.setText(config.get("Path", "steam_path"))
+        except (NoOptionError, NoSectionError):
+            pass
+
+        try: # try to get tile_iconify_main_path from config file
+            self.tileIconifyFolder_lineEdit.setText(config.get("Path", "tile_iconify_main_path"))
+        except (NoOptionError, NoSectionError):
+            pass
+
+
+        # TODO SET THAT THE ICONIFY BUTTON SO IT CAN UPDATE IF PATH CHANGED
+        # WHEREIWAS
+        # config.set("Path", "testenin", "42")
+
+        # with open(configFileName, "w") as configFile:
+        #     config.write(configFile)
         
