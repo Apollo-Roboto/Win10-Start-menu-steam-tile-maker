@@ -132,7 +132,6 @@ class Iconify:
         originalIconPath = self.userOptions.originalIconPath
         mediumIconPath = self.userOptions.mediumIconPath
         smallIconPath = self.userOptions.smallIconPath
-        
 
         icon = Image.open(originalIconPath)
 

@@ -1,5 +1,6 @@
 import pathlib
 import os, re
+from PIL import Image
 
 class UserOptions():
 
@@ -60,6 +61,12 @@ class UserOptions():
         if(not os.path.exists(path)):
             raise ValueError("Cannot find " + path)
 
+        try: # check if the file is valid for PILLOW
+            icon = Image.open(path)
+            del icon
+        except OSError:
+            raise ValueError("Incompatible image file")
+
         self.originalIconPath = path
 
 
@@ -81,7 +88,7 @@ class UserOptions():
         self.tileIconifyMainPath = path
 
     
-    
+
     def __init__(self, gameName, gameURL, icon, steamPath, tileIconifyMainPath):
 
 
