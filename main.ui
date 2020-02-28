@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>550</width>
-    <height>305</height>
+    <width>623</width>
+    <height>365</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -47,7 +47,7 @@
     </property>
     <item row="1" column="0">
      <layout class="QGridLayout" name="gridLayout">
-      <item row="4" column="1">
+      <item row="5" column="1">
        <widget class="QLineEdit" name="customShortcutFolder_lineEdit">
         <property name="enabled">
          <bool>true</bool>
@@ -74,14 +74,14 @@
         </property>
        </widget>
       </item>
-      <item row="1" column="0">
-       <widget class="QLabel" name="label_2">
+      <item row="5" column="2">
+       <widget class="QToolButton" name="customShortcutFolder_toolButton">
         <property name="text">
-         <string>Game url:</string>
+         <string>...</string>
         </property>
        </widget>
       </item>
-      <item row="3" column="1">
+      <item row="4" column="1">
        <widget class="QLineEdit" name="steamLocation_lineEdit">
         <property name="enabled">
          <bool>true</bool>
@@ -91,31 +91,24 @@
         </property>
        </widget>
       </item>
-      <item row="4" column="0">
+      <item row="5" column="0">
        <widget class="QLabel" name="label_5">
         <property name="text">
          <string>Custom shortcut folder:</string>
         </property>
        </widget>
       </item>
-      <item row="3" column="0">
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_2">
+        <property name="text">
+         <string>Game url:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
        <widget class="QLabel" name="label_4">
         <property name="text">
          <string>Steam location:</string>
-        </property>
-       </widget>
-      </item>
-      <item row="4" column="2">
-       <widget class="QToolButton" name="customShortcutFolder_toolButton">
-        <property name="text">
-         <string>...</string>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="2">
-       <widget class="QToolButton" name="steamLocation_toolButton">
-        <property name="text">
-         <string>...</string>
         </property>
        </widget>
       </item>
@@ -123,13 +116,6 @@
        <widget class="QToolButton" name="iconLocation_toolButton">
         <property name="text">
          <string>...</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="1">
-       <widget class="QLineEdit" name="gameURL_lineEdit">
-        <property name="dragEnabled">
-         <bool>false</bool>
         </property>
        </widget>
       </item>
@@ -142,6 +128,33 @@
       </item>
       <item row="0" column="1">
        <widget class="QLineEdit" name="gameTitle_lineEdit"/>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLineEdit" name="gameURL_lineEdit">
+        <property name="dragEnabled">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="2">
+       <widget class="QToolButton" name="steamLocation_toolButton">
+        <property name="text">
+         <string>...</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <spacer name="verticalSpacer">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>40</height>
+         </size>
+        </property>
+       </spacer>
       </item>
      </layout>
     </item>
@@ -156,68 +169,6 @@
          <string>Error</string>
         </property>
        </widget>
-      </item>
-     </layout>
-    </item>
-    <item row="1" column="1" rowspan="2">
-     <layout class="QVBoxLayout" name="verticalLayout_2">
-      <item>
-       <layout class="QHBoxLayout" name="horizontalLayout_5">
-        <item>
-         <widget class="QLabel" name="mediumIconPreview_label">
-          <property name="minimumSize">
-           <size>
-            <width>124</width>
-            <height>124</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>124</width>
-            <height>124</height>
-           </size>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">border: 1px solid grey;</string>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <layout class="QHBoxLayout" name="horizontalLayout_4">
-        <item>
-         <widget class="QLabel" name="smallIconPreview_label">
-          <property name="minimumSize">
-           <size>
-            <width>60</width>
-            <height>60</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>60</width>
-            <height>60</height>
-           </size>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">border: 1px solid grey;</string>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
-          </property>
-         </widget>
-        </item>
-       </layout>
       </item>
      </layout>
     </item>
@@ -284,6 +235,116 @@
       </item>
      </layout>
     </item>
+    <item row="1" column="1" rowspan="2">
+     <widget class="QGroupBox" name="iconPreview_groupBox">
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="title">
+       <string>Preview</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <item>
+        <spacer name="verticalSpacer_4">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
+        <widget class="QLabel" name="mediumIconPreview_label">
+         <property name="minimumSize">
+          <size>
+           <width>124</width>
+           <height>124</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>124</width>
+           <height>124</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">border: 1px solid grey;</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer_2">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
+        <widget class="QLabel" name="smallIconPreview_label">
+         <property name="minimumSize">
+          <size>
+           <width>60</width>
+           <height>60</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>60</width>
+           <height>60</height>
+          </size>
+         </property>
+         <property name="layoutDirection">
+          <enum>Qt::LeftToRight</enum>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">border: 1px solid grey;</string>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::NoFrame</enum>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer_3">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+    </item>
    </layout>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -291,7 +352,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>550</width>
+     <width>623</width>
      <height>21</height>
     </rect>
    </property>

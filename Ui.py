@@ -57,7 +57,7 @@ class Ui(QtWidgets.QMainWindow):
 
         size = (self.smallIconPreview_label.height(), self.smallIconPreview_label.height())
         self.smallIconPreview_label.setPixmap(pixmap.scaled(*size))
-        
+
 
 
     def resetPreviewIcon(self):
@@ -142,16 +142,12 @@ class Ui(QtWidgets.QMainWindow):
         fileName = fileName[0] # getOpenFileName returns a tuple for some reason, I only need the path
 
         if(not fileName == ""):
-            #todo update preview icon from there
             self.iconLocation_lineEdit.setText(fileName)
 
             try:
                 self.setPreviewIcon(fileName)
             except ValueError as e:
                 self.statusMessage(e.args[0], "red")
-            
-
-
 
 
 
@@ -176,7 +172,7 @@ class Ui(QtWidgets.QMainWindow):
         self.statusBar().hide()
         self.inputError_label.setText("")
         width = 600
-        height = 300
+        height = 325
         self.setMinimumSize(width, height)
         self.setMaximumSize(width, height)
 
@@ -188,8 +184,8 @@ class Ui(QtWidgets.QMainWindow):
         self.iconLocation_toolButton.clicked.connect(self.iconLocation_toolButton_clicked)
         self.steamLocation_toolButton.clicked.connect(self.steamLocation_toolButton_clicked)
         self.customShortcutFolder_toolButton.clicked.connect(self.customShortcutFolder_toolButton_clicked)
-        
-        
+
+
 
 
     def initFromConf(self):
