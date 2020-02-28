@@ -47,12 +47,16 @@ class Ui(QtWidgets.QMainWindow):
 
         pixmap = QtGui.QPixmap(path)
 
-        #hide the border
+        # hide the border
         self.mediumIconPreview_label.setStyleSheet("")
         self.smallIconPreview_label.setStyleSheet("")
 
-        self.mediumIconPreview_label.setPixmap(pixmap)
-        self.smallIconPreview_label.setPixmap(pixmap)
+        # apply image to label
+        size = (self.mediumIconPreview_label.height(), self.mediumIconPreview_label.height())
+        self.mediumIconPreview_label.setPixmap(pixmap.scaled(*size))
+
+        size = (self.smallIconPreview_label.height(), self.smallIconPreview_label.height())
+        self.smallIconPreview_label.setPixmap(pixmap.scaled(*size))
         
 
 
