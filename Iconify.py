@@ -176,6 +176,7 @@ class Iconify:
         del icon
 
 
+
     # tileIconifier need those metadata file
     def createIconMetadata(self):
 
