@@ -1,8 +1,7 @@
-<?xml version="1.0"?>
-<ShortcutItemImage xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <OriginalPath>{originalIconPath}</OriginalPath>
-  <Height>100</Height>
-  <Width>100</Width>
+<ShortcutItemImage>
+  <OriginalPath>originalIconPath</OriginalPath>
+  <Height>%</Height>
+  <Width>%</Width>
   <X>0</X>
   <Y>0</Y>
 </ShortcutItemImage>

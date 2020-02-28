@@ -23,17 +23,12 @@ class UserOptions():
     visualElementsFolder = ""
     mediumIconPath = ""
     smallIconPath = ""
+    mediumIconMetaPath = ""
+    smallIconMetaPath = ""
+
+
 
     def __init__(self, gameName, gameURL, icon, steamPath, customShortcutFolder):
-
-
-        #these are a few input for testing
-
-        # ---testenin---
-        # steam://rungameid/126409
-        # C:\Users\Alex\Desktop\Win10-Start-menu-steam-tile-maker-master\testIcon.png
-        # C:\Program Files (x86)\Steam\Steam.exe
-        # C:\ProgramData\TileIconify\
 
         self.setGameName(gameName)
         self.setGameURL(gameURL)
@@ -42,6 +37,8 @@ class UserOptions():
         self.setCustomShortcutFolder(customShortcutFolder)
 
         self.generate()
+
+
 
     def generate(self):
         self.steamDirtectory = "\\".join(self.steamPath.split("\\")[:-1]) + "\\"
@@ -52,6 +49,8 @@ class UserOptions():
         self.visualElementsFolder = os.path.join(self.gameFolderPath, "VisualElements")
         self.mediumIconPath = os.path.join(self.visualElementsFolder, f"MediumIcon{self.gameName}.png")
         self.smallIconPath = os.path.join(self.visualElementsFolder, f"SmallIcon{self.gameName}.png")
+        self.mediumIconMetaPath = os.path.join(self.visualElementsFolder, f"MediumIcon{self.gameName}_Metadata.xml")
+        self.smallIconMetaPath = os.path.join(self.visualElementsFolder, f"SmallIcon{self.gameName}_Metadata.xml")
 
 
 

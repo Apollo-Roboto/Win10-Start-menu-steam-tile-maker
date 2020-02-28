@@ -5,6 +5,6 @@
     Square150x150Logo="VisualElements\MediumIcon{gameName}.png"
     Square70x70Logo="VisualElements\SmallIcon{gameName}.png"
     ForegroundText="light"
-    BackgroundColor="#000000"
+    BackgroundColor="#444444"
     />
 </Application> 

@@ -2,6 +2,7 @@ import os, re
 from win32com.client import Dispatch #used to create shortcut
 from PIL import Image
 import pathlib
+import xml.etree.ElementTree
 
 from UserOptions import UserOptions
 
@@ -177,12 +178,23 @@ class Iconify:
 
     # tileIconifier need those metadata file
     def createIconMetadata(self):
-        mediumIconPath = self.userOptions.mediumIconPath
-        smallIconPath = self.userOptions.smallIconPath
 
-        mediumIconMeta = pathlib.Path(mediumIconPath).stem
-        smalIconMeta = pathlib.Path(smallIconPath).stem
+        iconPath = self.userOptions.originalIconPath
 
-        #whereiwas make the metadata file tileiconifier uses
+        mediumIconMeta = self.userOptions.mediumIconMetaPath
+        smallIconMeta = self.userOptions.smallIconMetaPath
+        
+        # open the xml template
+        template = "templates\\template_Metadata.xml"
+        elementTree = xml.etree.ElementTree.parse(template)
 
-        pass
+        # write values to it
+        elementTree.getroot().find("OriginalPath").text = iconPath
+
+        elementTree.getroot().find("Height").text = "100"
+        elementTree.getroot().find("Width").text = "100"
+        elementTree.write(mediumIconMeta)
+
+        elementTree.getroot().find("Height").text = "50"
+        elementTree.getroot().find("Width").text = "50"
+        elementTree.write(smallIconMeta)
