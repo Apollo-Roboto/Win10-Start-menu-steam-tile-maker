@@ -1,8 +1,9 @@
 
-from PyQt5 import QtWidgets, uic
+from configparser import ConfigParser, NoOptionError, NoSectionError
+from PyQt5 import QtWidgets, QtGui, uic
 import sys, re
 import pathlib
-from configparser import ConfigParser, NoOptionError, NoSectionError
+from PIL import Image
 
 from Iconify import Iconify
 from UserOptions import UserOptions
@@ -31,7 +32,42 @@ class Ui(QtWidgets.QMainWindow):
 
         self.inputError_label.setText(msg)
 
+
+
+    def setPreviewIcon(self, path):
+
+        icon = None
+
+        try: # check if the file is valid for PILLOW
+            icon = Image.open(path)
+            del icon
+        except OSError:
+            self.resetPreviewIcon()
+            raise ValueError("Incompatible image file.")
+
+        pixmap = QtGui.QPixmap(path)
+
+        #hide the border
+        self.mediumIconPreview_label.setStyleSheet("")
+        self.smallIconPreview_label.setStyleSheet("")
+
+        self.mediumIconPreview_label.setPixmap(pixmap)
+        self.smallIconPreview_label.setPixmap(pixmap)
+        
+
+
+    def resetPreviewIcon(self):
+        self.smallIconPreview_label.setPixmap(QtGui.QPixmap())
+        self.mediumIconPreview_label.setPixmap(QtGui.QPixmap())
+
+        self.mediumIconPreview_label.setStyleSheet("border: 1px solid grey;")
+        self.smallIconPreview_label.setStyleSheet("border: 1px solid grey;")
+
+
+
     def iconify_pushButton_clicked(self):
+
+        self.statusMessage("Loading...")
 
         try:
             userOptions = UserOptions(  self.gameTitle_lineEdit.text(),
@@ -96,6 +132,14 @@ class Ui(QtWidgets.QMainWindow):
             #todo update preview icon from there
             self.iconLocation_lineEdit.setText(fileName)
 
+            try:
+                self.setPreviewIcon(fileName)
+            except ValueError as e:
+                self.statusMessage(e.args[0], "red")
+            
+
+
+
 
 
     def steamLocation_toolButton_clicked(self):
@@ -130,7 +174,8 @@ class Ui(QtWidgets.QMainWindow):
         self.iconLocation_toolButton.clicked.connect(self.iconLocation_toolButton_clicked)
         self.steamLocation_toolButton.clicked.connect(self.steamLocation_toolButton_clicked)
         self.customShortcutFolder_toolButton.clicked.connect(self.customShortcutFolder_toolButton_clicked)
-
+        
+        
 
 
     def initFromConf(self):

@@ -1,6 +1,7 @@
 import os, re
 from win32com.client import Dispatch #used to create shortcut
 from PIL import Image
+import pathlib
 
 from UserOptions import UserOptions
 
@@ -66,6 +67,10 @@ class Iconify:
         #create icons for the visual elements from the image specified in the configs
         self.createIcons()
 
+        self.createIconMetadata()
+
+        print("\033[92mSuccess!\033[0m")
+
 
 
     def applyUserOptionsToData(self, fileData):
@@ -101,7 +106,7 @@ class Iconify:
             print("Creating...")
 
             # load template
-            with open("template.vbs", "r") as f:
+            with open("templates/template.vbs", "r") as f:
                 vbsTemplate = f.read()
 
             #modify template
@@ -136,7 +141,7 @@ class Iconify:
         if(not pathExist(vemFile)):
             print("Creating...")
 
-            with open("template.VisualElementsManifest.xml", "r") as f:
+            with open("templates/template.VisualElementsManifest.xml", "r") as f:
                 template = f.read()
 
             template = self.applyUserOptionsToData(template)
@@ -168,3 +173,16 @@ class Iconify:
             icon.save(smallIconPath)
 
         del icon
+
+
+    # tileIconifier need those metadata file
+    def createIconMetadata(self):
+        mediumIconPath = self.userOptions.mediumIconPath
+        smallIconPath = self.userOptions.smallIconPath
+
+        mediumIconMeta = pathlib.Path(mediumIconPath).stem
+        smalIconMeta = pathlib.Path(smallIconPath).stem
+
+        #whereiwas make the metadata file tileiconifier uses
+
+        pass

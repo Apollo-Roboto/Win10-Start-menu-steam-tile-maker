@@ -46,7 +46,7 @@ class UserOptions():
     def generate(self):
         self.steamDirtectory = "\\".join(self.steamPath.split("\\")[:-1]) + "\\"
         self.shortcutPath = os.path.join(pathlib.Path.home(), "AppData", "Roaming", "Microsoft", "Windows", "Start Menu", "Programs", "TileIconify", "Custom Shortcuts", self.gameName, self.gameName + ".lnk")
-        self.gameFolderPath = os.path.join(self.setCustomShortcutFolder, self.gameName)
+        self.gameFolderPath = os.path.join(self.customShortcutFolder, self.gameName)
         self.vbsFile = os.path.join(self.gameFolderPath, self.gameName + ".vbs")
         self.visualElementsManifestFile = os.path.join(self.gameFolderPath, self.gameName + ".VisualElementsManifest.xml")
         self.visualElementsFolder = os.path.join(self.gameFolderPath, "VisualElements")
