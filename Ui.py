@@ -137,6 +137,7 @@ class Ui(QtWidgets.QMainWindow):
                 self.statusMessage("Invalid game url", "red")
 
 
+
     def iconLocation_toolButton_clicked(self):
         fileName = QtWidgets.QFileDialog.getOpenFileName(self, "Open Image", "", "Image Files (*.png *.jpg *.bmp)")
         fileName = fileName[0] # getOpenFileName returns a tuple for some reason, I only need the path
@@ -169,12 +170,11 @@ class Ui(QtWidgets.QMainWindow):
 
     def initUI(self):
         # apparence
-        self.statusBar().hide()
-        self.inputError_label.setText("")
-        width = 600
-        height = 325
-        self.setMinimumSize(width, height)
-        self.setMaximumSize(width, height)
+        self.statusMessage("")
+        # width = 600
+        # height = 280
+        # self.setMinimumSize(width, height)
+        # self.setMaximumSize(width, height)
 
         # connections
         self.iconify_pushButton.clicked.connect(self.iconify_pushButton_clicked)
@@ -184,7 +184,6 @@ class Ui(QtWidgets.QMainWindow):
         self.iconLocation_toolButton.clicked.connect(self.iconLocation_toolButton_clicked)
         self.steamLocation_toolButton.clicked.connect(self.steamLocation_toolButton_clicked)
         self.customShortcutFolder_toolButton.clicked.connect(self.customShortcutFolder_toolButton_clicked)
-
 
 
 
