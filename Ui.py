@@ -202,7 +202,3 @@ class Ui(QtWidgets.QMainWindow):
             self.customShortcutFolder_lineEdit.setText(config.get("Path", "custom_shortcut_folder"))
         except (NoOptionError, NoSectionError):
             pass
-
-
-        
-        
