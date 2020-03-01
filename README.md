@@ -1,4 +1,4 @@
-# Win10-Start-menu-steam-tile-maker
+# Start menu steam tile maker
 Based on TileIconifier's custom shortcut system that is used to make steam tiles.
 
 **This app is a work in progress but is currently working**
