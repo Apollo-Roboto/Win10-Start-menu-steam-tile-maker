@@ -176,6 +176,9 @@ class Ui(QtWidgets.QMainWindow):
         # self.setMinimumSize(width, height)
         # self.setMaximumSize(width, height)
 
+        # set window icon
+        self.setWindowIcon(QtGui.QIcon("steamIcon.ico"))
+
         # connections
         self.iconify_pushButton.clicked.connect(self.iconify_pushButton_clicked)
         self.reset_pushButton.clicked.connect(self.reset_pushButton_clicked)

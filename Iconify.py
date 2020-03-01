@@ -130,7 +130,7 @@ class Iconify:
 
         if(not pathExist(shortcut)):
             print("Creating...")
-            createShortcut(self.userOptions.vbsFile, shortcut)
+            createShortcut(self.userOptions.vbsFile, shortcut, "steamIcon.ico")
 
 
 

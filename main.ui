@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>621</width>
-    <height>291</height>
+    <height>270</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -85,25 +85,18 @@
         <property name="enabled">
          <bool>true</bool>
         </property>
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Folder containing all custom shortcuts&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
         <property name="readOnly">
          <bool>false</bool>
         </property>
        </widget>
       </item>
       <item row="2" column="1">
-       <widget class="QLineEdit" name="iconLocation_lineEdit"/>
-      </item>
-      <item row="2" column="0">
-       <widget class="QLabel" name="label_3">
-        <property name="text">
-         <string>Icon location:</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="0">
-       <widget class="QLabel" name="label">
-        <property name="text">
-         <string>Game title:</string>
+       <widget class="QLineEdit" name="iconLocation_lineEdit">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Icon location&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
        </widget>
       </item>
@@ -114,13 +107,17 @@
         </property>
        </widget>
       </item>
-      <item row="4" column="1">
-       <widget class="QLineEdit" name="steamLocation_lineEdit">
-        <property name="enabled">
-         <bool>true</bool>
+      <item row="0" column="0">
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>Game title:</string>
         </property>
-        <property name="readOnly">
-         <bool>false</bool>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="label_3">
+        <property name="text">
+         <string>Icon location:</string>
         </property>
        </widget>
       </item>
@@ -138,6 +135,26 @@
         </property>
        </widget>
       </item>
+      <item row="4" column="1">
+       <widget class="QLineEdit" name="steamLocation_lineEdit">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Location of the steam executable&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+        <property name="readOnly">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="2">
+       <widget class="QToolButton" name="gameURL_toolButton">
+        <property name="text">
+         <string>...</string>
+        </property>
+       </widget>
+      </item>
       <item row="4" column="0">
        <widget class="QLabel" name="label_4">
         <property name="text">
@@ -152,27 +169,10 @@
         </property>
        </widget>
       </item>
-      <item row="1" column="2">
-       <widget class="QToolButton" name="gameURL_toolButton">
-        <property name="text">
-         <string>...</string>
-        </property>
-       </widget>
-      </item>
       <item row="0" column="1">
-       <widget class="QLineEdit" name="gameTitle_lineEdit"/>
-      </item>
-      <item row="1" column="1">
-       <widget class="QLineEdit" name="gameURL_lineEdit">
-        <property name="dragEnabled">
-         <bool>false</bool>
-        </property>
-       </widget>
-      </item>
-      <item row="4" column="2">
-       <widget class="QToolButton" name="steamLocation_toolButton">
-        <property name="text">
-         <string>...</string>
+       <widget class="QLineEdit" name="gameTitle_lineEdit">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Game title&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
        </widget>
       </item>
@@ -188,6 +188,23 @@
          </size>
         </property>
        </spacer>
+      </item>
+      <item row="4" column="2">
+       <widget class="QToolButton" name="steamLocation_toolButton">
+        <property name="text">
+         <string>...</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLineEdit" name="gameURL_lineEdit">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;URL that steam use to open games&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+        <property name="dragEnabled">
+         <bool>false</bool>
+        </property>
+       </widget>
       </item>
      </layout>
     </item>
