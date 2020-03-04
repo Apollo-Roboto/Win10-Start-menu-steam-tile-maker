@@ -171,6 +171,7 @@ class Ui(QtWidgets.QMainWindow):
     def initUI(self):
         # apparence
         self.statusMessage("")
+        self.setFixedSize(self.size())
 
         # set window icon
         self.setWindowIcon(QtGui.QIcon("steamIcon.ico"))
