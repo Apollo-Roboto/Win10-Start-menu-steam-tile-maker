@@ -139,8 +139,8 @@ class Ui(QtWidgets.QMainWindow):
 
 
     def iconLocation_toolButton_clicked(self):
-        fileName = QtWidgets.QFileDialog.getOpenFileName(self, "Open Image", "", "Image Files (*.png *.jpg *.bmp)")
-        path = fileName[0] # getOpenFileName returns a path and type of file, I only need the path
+        fileDialogResult = QtWidgets.QFileDialog.getOpenFileName(self, "Open Image", "", "Image Files (*.png *.jpg *.bmp)")
+        path = fileDialogResult[0] # getOpenFileName returns a path and type of file, I only need the path
 
         if(not path == ""):
             self.iconLocation_lineEdit.setText(path)
