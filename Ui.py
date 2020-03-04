@@ -140,13 +140,13 @@ class Ui(QtWidgets.QMainWindow):
 
     def iconLocation_toolButton_clicked(self):
         fileName = QtWidgets.QFileDialog.getOpenFileName(self, "Open Image", "", "Image Files (*.png *.jpg *.bmp)")
-        fileName = fileName[0] # getOpenFileName returns a tuple for some reason, I only need the path
+        path = fileName[0] # getOpenFileName returns a path and type of file, I only need the path
 
-        if(not fileName == ""):
-            self.iconLocation_lineEdit.setText(fileName)
+        if(not path == ""):
+            self.iconLocation_lineEdit.setText(path)
 
             try:
-                self.setPreviewIcon(fileName)
+                self.setPreviewIcon(path)
             except ValueError as e:
                 self.statusMessage(e.args[0], "red")
 
