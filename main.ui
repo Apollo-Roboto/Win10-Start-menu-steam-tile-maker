@@ -235,7 +235,7 @@
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_2">
        <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_2">
+        <layout class="QHBoxLayout" name="iconPreview_horizontalLayout">
          <item>
           <widget class="QLabel" name="mediumIconPreview_label">
            <property name="enabled">
@@ -310,7 +310,7 @@
         </layout>
        </item>
        <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_3">
+        <layout class="QHBoxLayout" name="defaultIconPreview_horizontalLayout">
          <item>
           <widget class="QLabel" name="mediumDefaultIconPreview_label">
            <property name="enabled">
