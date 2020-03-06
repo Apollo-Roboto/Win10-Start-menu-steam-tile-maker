@@ -107,6 +107,23 @@ class Ui(QtWidgets.QMainWindow):
         self.iconLocation_lineEdit.clear()
         self.statusMessage("")
         self.resetPreviewIcon()
+    
+
+
+    def refresh_pushButton_clicked(self):
+        # get path entered
+        path = self.iconLocation_lineEdit.text()
+
+        #if path is empty, return
+        if(path == ""):
+            self.statusMessage("Icon location is empty.", "red")
+            return
+
+        # try to set the preview, if fails, show error
+        try:
+            self.setPreviewIcon(path)
+        except ValueError as e:
+            self.statusMessage(e.args[0], "red")
 
 
 
@@ -139,7 +156,7 @@ class Ui(QtWidgets.QMainWindow):
 
 
     def iconLocation_toolButton_clicked(self):
-        fileDialogResult = QtWidgets.QFileDialog.getOpenFileName(self, "Open Image", "", "Image Files (*.png *.jpg *.bmp)")
+        fileDialogResult = QtWidgets.QFileDialog.getOpenFileName(self, "Open Image", "", "Image Files (*.png *.jpg *.bmp *.ico)")
         path = fileDialogResult[0] # getOpenFileName returns a path and type of file, I only need the path
 
         if(not path == ""):
@@ -179,6 +196,7 @@ class Ui(QtWidgets.QMainWindow):
         # connections
         self.iconify_pushButton.clicked.connect(self.iconify_pushButton_clicked)
         self.reset_pushButton.clicked.connect(self.reset_pushButton_clicked)
+        self.refresh_pushButton.clicked.connect(self.refresh_pushButton_clicked)
 
         self.gameURL_toolButton.clicked.connect(self.gameURL_toolButton_clicked)
         self.iconLocation_toolButton.clicked.connect(self.iconLocation_toolButton_clicked)
