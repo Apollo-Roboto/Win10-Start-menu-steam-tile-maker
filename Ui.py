@@ -4,6 +4,7 @@ from PyQt5 import QtWidgets, QtGui, uic
 import sys, re
 import pathlib
 from PIL import Image
+from PIL.ImageQt import ImageQt
 
 from Iconify import Iconify
 from UserOptions import UserOptions
@@ -36,16 +37,17 @@ class Ui(QtWidgets.QMainWindow):
 
     def setPreviewIcon(self, path):
 
-        icon = None
+        img = None
 
         try: # check if the file is valid for PILLOW
-            icon = Image.open(path)
-            del icon
+            img = Image.open(path) # load image
         except OSError:
             self.resetPreviewIcon()
             raise ValueError("Incompatible image file.")
 
-        pixmap = QtGui.QPixmap(path)
+        # need to use ImageQt to be able to open .ico files
+        qimg = ImageQt(img)
+        pixmap = QtGui.QPixmap.fromImage(qimg)
 
         # hide the border
         self.mediumIconPreview_label.setStyleSheet("")
