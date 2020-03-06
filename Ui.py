@@ -9,6 +9,8 @@ from PIL.ImageQt import ImageQt
 from Iconify import Iconify
 from UserOptions import UserOptions
 
+
+
 class Ui(QtWidgets.QMainWindow):
 
     def __init__(self):
@@ -151,6 +153,18 @@ class Ui(QtWidgets.QMainWindow):
                 # set game title from the selected file
                 gameTitle = pathlib.Path(fileName).stem
                 self.gameTitle_lineEdit.setText(gameTitle)
+
+                # set icon path if availlable
+                re_icoPath = re.compile("(?<=IconFile=).*\\.ico")
+                match = re_icoPath.search(data)
+
+                if(match != None):
+                    path = match[0]
+                    self.iconLocation_lineEdit.setText(path)
+                    try:
+                        self.setPreviewIcon(path)
+                    except ValueError:
+                        pass
 
             else:
                 self.statusMessage("Invalid game url", "red")
