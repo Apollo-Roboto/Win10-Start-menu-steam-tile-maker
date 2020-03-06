@@ -4,9 +4,12 @@ from PyQt5 import QtWidgets, QtGui, uic
 import sys, re
 import pathlib
 from PIL import Image
+from PIL.ImageQt import ImageQt
 
 from Iconify import Iconify
 from UserOptions import UserOptions
+
+
 
 class Ui(QtWidgets.QMainWindow):
 
@@ -33,16 +36,17 @@ class Ui(QtWidgets.QMainWindow):
 
     def setPreviewIcon(self, path):
 
-        icon = None
+        img = None
 
         try: # check if the file is valid for PILLOW
-            icon = Image.open(path)
-            del icon
+            img = Image.open(path) # load image
         except OSError:
             self.resetPreviewIcon()
             raise ValueError("Incompatible image file.")
 
-        pixmap = QtGui.QPixmap(path)
+        # need to use ImageQt to be able to open .ico files
+        qimg = ImageQt(img)
+        pixmap = QtGui.QPixmap.fromImage(qimg)
 
         # hide the border
         self.mediumIconPreview_label.setStyleSheet("")
@@ -104,6 +108,23 @@ class Ui(QtWidgets.QMainWindow):
         self.iconLocation_lineEdit.clear()
         self.statusMessage("")
         self.resetPreviewIcon()
+    
+
+
+    def refresh_pushButton_clicked(self):
+        # get path entered
+        path = self.iconLocation_lineEdit.text()
+
+        #if path is empty, return
+        if(path == ""):
+            self.statusMessage("Icon location is empty.", "red")
+            return
+
+        # try to set the preview, if fails, show error
+        try:
+            self.setPreviewIcon(path)
+        except ValueError as e:
+            self.statusMessage(e.args[0], "red")
 
 
 
@@ -119,7 +140,7 @@ class Ui(QtWidgets.QMainWindow):
                 data = urlFile.read()
 
             # match the url and write the result
-            re_steamURL = re.compile("steam://rungameid/[0-9]+")
+            re_steamURL = re.compile("(?<=URL=)steam://rungameid/[0-9]+")
             match = re_steamURL.search(data)
 
             if(match != None):
@@ -130,13 +151,25 @@ class Ui(QtWidgets.QMainWindow):
                 gameTitle = pathlib.Path(fileName).stem
                 self.gameTitle_lineEdit.setText(gameTitle)
 
+                # set icon path if availlable
+                re_icoPath = re.compile("(?<=IconFile=).*\\.ico")
+                match = re_icoPath.search(data)
+
+                if(match != None):
+                    path = match[0]
+                    self.iconLocation_lineEdit.setText(path)
+                    try:
+                        self.setPreviewIcon(path)
+                    except ValueError:
+                        pass
+
             else:
                 self.statusMessage("Invalid game url", "red")
 
 
 
     def iconLocation_toolButton_clicked(self):
-        fileDialogResult = QtWidgets.QFileDialog.getOpenFileName(self, "Open Image", "", "Image Files (*.png *.jpg *.bmp)")
+        fileDialogResult = QtWidgets.QFileDialog.getOpenFileName(self, "Open Image", "", "Image Files (*.png *.jpg *.bmp *.ico)")
         path = fileDialogResult[0] # getOpenFileName returns a path and type of file, I only need the path
 
         if(not path == ""):
@@ -176,6 +209,7 @@ class Ui(QtWidgets.QMainWindow):
         # connections
         self.iconify_pushButton.clicked.connect(self.iconify_pushButton_clicked)
         self.reset_pushButton.clicked.connect(self.reset_pushButton_clicked)
+        self.refresh_pushButton.clicked.connect(self.refresh_pushButton_clicked)
 
         self.gameURL_toolButton.clicked.connect(self.gameURL_toolButton_clicked)
         self.iconLocation_toolButton.clicked.connect(self.iconLocation_toolButton_clicked)
