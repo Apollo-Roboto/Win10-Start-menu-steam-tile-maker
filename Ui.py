@@ -143,7 +143,7 @@ class Ui(QtWidgets.QMainWindow):
                 data = urlFile.read()
 
             # match the url and write the result
-            re_steamURL = re.compile("steam://rungameid/[0-9]+")
+            re_steamURL = re.compile("(?<=URL=)steam://rungameid/[0-9]+")
             match = re_steamURL.search(data)
 
             if(match != None):
