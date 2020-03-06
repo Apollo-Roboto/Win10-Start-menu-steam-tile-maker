@@ -22,11 +22,8 @@ class Ui(QtWidgets.QMainWindow):
 
 
     def statusMessage(self, msg, color=""):
-        color = color.lower()
-        if(color == "red"):
-            self.inputError_label.setStyleSheet("color: FireBrick;")
-        elif(color == "green"):
-            self.inputError_label.setStyleSheet("color: ForestGreen;")
+        if(color != ""):
+            self.inputError_label.setStyleSheet(f"color: {color};")
         else:
             self.inputError_label.setStyleSheet("")
 
