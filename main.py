@@ -1,6 +1,7 @@
 
 from PyQt5 import QtWidgets
 import sys
+import platform
 
 from Ui import Ui
 
@@ -17,4 +18,9 @@ def main():
 
 
 if(__name__ == "__main__"):
-    main()
+
+    # Only runs if the system is Windows
+    if(platform.system() == "Windows"):
+        main()
+    else:
+        print("Incompatible OS, this app can only run on Windows")
