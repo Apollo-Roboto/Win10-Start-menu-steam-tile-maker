@@ -75,11 +75,11 @@ class Ui(QtWidgets.QMainWindow):
         self.statusMessage("Loading...")
 
         try:
-            userOptions = UserOptions(  self.gameTitle_lineEdit.text(),
-                                        self.gameURL_lineEdit.text(),
-                                        self.iconLocation_lineEdit.text(),
-                                        self.steamLocation_lineEdit.text(),
-                                        self.customShortcutFolder_lineEdit.text())
+            userOptions = UserOptions(  self.gameTitle_lineEdit.text().strip(),
+                                        self.gameURL_lineEdit.text().strip(),
+                                        self.iconLocation_lineEdit.text().strip(),
+                                        self.steamLocation_lineEdit.text().strip(),
+                                        self.customShortcutFolder_lineEdit.text().strip())
 
             # if everything went through, do the magic iconify stuff
             Iconify(userOptions)
@@ -152,18 +152,20 @@ class Ui(QtWidgets.QMainWindow):
                 self.gameTitle_lineEdit.setText(gameTitle)
 
                 # set icon path if availlable
-                re_icoPath = re.compile("(?<=IconFile=).*\\.ico")
-                match = re_icoPath.search(data)
+                if(self.iconLocation_lineEdit.text().strip() == ""): # if there is text already, don't change it
 
-                if(match != None):
-                    path = match[0]
-                    self.iconLocation_lineEdit.setText(path)
-                    try:
-                        self.setPreviewIcon(path)
-                    except ValueError:
-                        pass
+                    re_icoPath = re.compile("(?<=IconFile=).*\\.ico")
+                    match = re_icoPath.search(data)
 
-            else:
+                    if(match != None):
+                        path = match[0]
+                        self.iconLocation_lineEdit.setText(path)
+                        try:
+                            self.setPreviewIcon(path)
+                        except ValueError:
+                            pass
+
+            else: # if cannot find the steam game url
                 self.statusMessage("Invalid game url", "red")
 
 
