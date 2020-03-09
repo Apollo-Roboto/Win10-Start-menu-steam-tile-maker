@@ -128,7 +128,7 @@ class Ui(QtWidgets.QMainWindow):
 
 
 
-    def gameURL_toolButton_clicked(self):
+    def openUrl_pushButton_clicked(self):
         fileName = QtWidgets.QFileDialog.getOpenFileName(self, "Open Url", "", "Internet Shortcut (*.url)")
         fileName = fileName[0] # getOpenFileName returns a tuple for some reason, I only need the path
 
@@ -213,7 +213,7 @@ class Ui(QtWidgets.QMainWindow):
         self.reset_pushButton.clicked.connect(self.reset_pushButton_clicked)
         self.refresh_pushButton.clicked.connect(self.refresh_pushButton_clicked)
 
-        self.gameURL_toolButton.clicked.connect(self.gameURL_toolButton_clicked)
+        self.openUrl_pushButton.clicked.connect(self.openUrl_pushButton_clicked)
         self.iconLocation_toolButton.clicked.connect(self.iconLocation_toolButton_clicked)
         self.steamLocation_toolButton.clicked.connect(self.steamLocation_toolButton_clicked)
         self.customShortcutFolder_toolButton.clicked.connect(self.customShortcutFolder_toolButton_clicked)
